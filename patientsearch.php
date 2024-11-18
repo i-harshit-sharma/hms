@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php #include("func.php");
+<?php #include("loginhandler.php");
 ?>
 <html>
 

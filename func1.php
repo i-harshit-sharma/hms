@@ -139,7 +139,7 @@ function display_admin_panel()
       <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
         <div class="card">
           <div class="card-body">
-            <form class="form-group" method="post" action="func.php">
+            <form class="form-group" method="post" action="loginhandler.php">
               <input type="text" name="contact" class="form-control" placeholder="enter contact"><br>
               <select name="status" class="form-control">
                <option value="" disabled selected>Select Payment Status to update</option>
@@ -153,7 +153,7 @@ function display_admin_panel()
       </div>
       <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
       <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-        <form class="form-group" method="post" action="func.php">
+        <form class="form-group" method="post" action="loginhandler.php">
           <label>Doctors name: </label>
           <input type="text" name="name" placeholder="enter doctors name" class="form-control">
           <br>

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <?php
-include('func.php');
+include("loginhandler.php");
 include('newfunc.php');
 $con = mysqli_connect("localhost", "root", "", "myhmsdb");
-
 
 $pid = $_SESSION['pid'];
 $username = $_SESSION['username'];
@@ -12,8 +11,6 @@ $fname = $_SESSION['fname'];
 $gender = $_SESSION['gender'];
 $lname = $_SESSION['lname'];
 $contact = $_SESSION['contact'];
-
-
 
 if (isset($_POST['app-submit'])) {
   $pid = $_SESSION['pid'];
@@ -25,7 +22,6 @@ if (isset($_POST['app-submit'])) {
   $contact = $_SESSION['contact'];
   $doctor = $_POST['doctor'];
   $email = $_SESSION['email'];
-  # $fees=$_POST['fees'];
   $docFees = $_POST['docFees'];
 
   $appdate = $_POST['appdate'];
@@ -49,8 +45,6 @@ if (isset($_POST['app-submit'])) {
         '$pid', '$fname', '$lname', '$gender', '$email', '$contact', '$doctor', '$docFees', '$appdate', '$apptime', '1', '1'
     )
 ");
-
-
         if ($query) {
           echo "<script>alert('Your appointment successfully booked');</script>";
         } else {
@@ -73,10 +67,6 @@ if (isset($_GET['cancel'])) {
     echo "<script>alert('Your appointment successfully cancelled');</script>";
   }
 }
-
-
-
-
 
 function generate_bill()
 {
@@ -152,24 +142,12 @@ function get_specs()
 <html lang="en">
 
 <head>
-
-
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
-  <!-- Bootstrap CSS -->
-
   <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
-
-
-
-
-
-
-
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
@@ -271,7 +249,6 @@ function get_specs()
                     <div class="panel-body">
                       <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
                       <h4 class="StepTitle" style="margin-top: 5%;">My Appointments</h2>
-
                         <p class="cl-effect-1">
                           <a href="#app-hist" onclick="clickDiv('#list-pat-list')">
                             View Appointment History
@@ -287,7 +264,6 @@ function get_specs()
                   <div class="panel-body">
                     <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list-ul fa-stack-1x fa-inverse"></i> </span>
                     <h4 class="StepTitle" style="margin-top: 5%;">appointment</h2>
-
                       <p class="cl-effect-1">
                         <a href="#list-pres" onclick="clickDiv('#list-pres-list')">
                           View Prescription List
@@ -296,14 +272,8 @@ function get_specs()
                   </div>
                 </div>
               </div>
-
-
             </div>
           </div>
-
-
-
-
 
           <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
             <div class="container-fluid">
@@ -314,19 +284,6 @@ function get_specs()
                   </center><br>
                   <form class="form-group" method="post" action="admin-panel.php">
                     <div class="row">
-
-                      <!-- <?php
-
-                            $con = mysqli_connect("localhost", "root", "", "myhmsdb");
-                            $query = mysqli_query($con, "select username,spec from doctor");
-                            $docarray = array();
-                            while ($row = mysqli_fetch_assoc($query)) {
-                              $docarray[] = $row;
-                            }
-                            echo json_encode($docarray);
-
-                            ?> -->
-
 
                       <div class="col-md-4">
                         <label for="spec">Specialization:</label>
@@ -339,15 +296,12 @@ function get_specs()
                           ?>
                         </select>
                       </div>
-
                       <br><br>
-
                       <script>
                         document.getElementById('spec').onchange = function foo() {
                           let spec = this.value;
                           console.log(spec)
                           let docs = [...document.getElementById('doctor').options];
-
                           docs.forEach((el, ind, arr) => {
                             arr[ind].setAttribute("style", "");
                             if (el.getAttribute("data-spec") != spec) {
@@ -356,7 +310,6 @@ function get_specs()
                           });
                         };
                       </script>
-
                       <div class="col-md-4"><label for="doctor">Doctors:</label></div>
                       <div class="col-md-8">
                         <select name="doctor" class="form-control" id="doctor" required="required">
@@ -365,22 +318,18 @@ function get_specs()
                           <?php display_docs(); ?>
                         </select>
                       </div><br /><br />
-
-
                       <script>
                         document.getElementById('doctor').onchange = function updateFees(e) {
                           var selection = document.querySelector(`[value=${this.value}]`).getAttribute('data-value');
                           document.getElementById('docFees').value = selection;
                         };
                       </script>
-
                       <div class="col-md-4"><label for="consultancyfees">
                           Consultancy Fees
                         </label></div>
                       <div class="col-md-8">
                         <input class="form-control" type="text" name="docFees" id="docFees" readonly="readonly" />
                       </div><br><br>
-
                       <div class="col-md-4"><label>Appointment Date</label></div>
                       <div class="col-md-8"><input type="date" class="form-control datepicker" name="appdate"></div><br><br>
 
@@ -437,16 +386,12 @@ function get_specs()
                       if (($row['userStatus'] == 0) && ($row['doctorStatus'] == 1)) {
                         echo "Cancelled by You";
                       }
-
                       if (($row['userStatus'] == 1) && ($row['doctorStatus'] == 0)) {
                         echo "Cancelled by Doctor";
                       }
                       ?></td>
-
                     <td>
                       <?php if (($row['userStatus'] == 1) && ($row['doctorStatus'] == 1)) { ?>
-
-
                         <a href="admin-panel.php?ID=<?php echo $row['ID'] ?>&cancel=update"
                           onClick="return confirm('Are you sure you want to cancel this appointment ?')"
                           title="Cancel Appointment" tooltip-placement="top" tooltip="Remove"><button class="btn btn-danger">Cancel</button></a>
@@ -463,14 +408,10 @@ function get_specs()
             <br>
           </div>
 
-
-
           <div class="tab-pane fade" id="list-pres" role="tabpanel" aria-labelledby="list-pres-list">
-
             <table class="table table-hover">
               <thead>
                 <tr>
-
                   <th scope="col">Doctor Name</th>
                   <th scope="col">Appointment ID</th>
                   <th scope="col">Appointment Date</th>
@@ -524,7 +465,7 @@ function get_specs()
           </div>
           <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
           <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-            <form class="form-group" method="post" action="func.php">
+            <form class="form-group" method="post" action="loginhandler.php">
               <label>Doctors name: </label>
               <input type="text" name="name" placeholder="Enter doctors name" class="form-control">
               <br>
@@ -542,4 +483,5 @@ function get_specs()
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.all.min.js">
   </script>
 </body>
+
 </html>

@@ -16,7 +16,7 @@ if (isset($_POST['patsub'])) {
       $_SESSION['contact'] = $row['contact'];
       $_SESSION['email'] = $row['email'];
     }
-    header("Location:admin-panel.php");
+    header(header: "Location:admin-panel.php");
   } else {
     echo ("<script>alert('Invalid Username or Password. Try Again!');
           window.location.href = 'patientlogin.php';</script>");
@@ -25,18 +25,19 @@ if (isset($_POST['patsub'])) {
 if (isset($_POST['update_data'])) {
   $contact = $_POST['contact'];
   $status = $_POST['status'];
-  $query = "update appointment set payment='$status' where contact='$contact';";
+  $query = "update appointmenttb set payment='$status' where contact='$contact';";
   $result = mysqli_query($con, $query);
   if ($result)
     header("Location:updated.php");
 }
+
 
 if (isset($_POST['doc_sub'])) {
   $doctor = $_POST['doctor'];
   $dpassword = $_POST['dpassword'];
   $demail = $_POST['demail'];
   $docFees = $_POST['docFees'];
-  $query = "insert into doctor(username,password,email,docFees)values('$doctor','$dpassword','$demail','$docFees')";
+  $query = "insert into doctb(username,password,email,docFees)values('$doctor','$dpassword','$demail','$docFees')";
   $result = mysqli_query($con, $query);
   if ($result)
     header("Location:adddoc.php");
@@ -54,7 +55,7 @@ function display_admin_panel()
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-  <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> HMS</a>
+  <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> Global Hospital</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -94,11 +95,6 @@ function display_admin_panel()
     </div><br>
   </div>
 
-  
-
-
-
-
 
   <div class="col-md-8">
     <div class="tab-content" id="nav-tabContent">
@@ -126,9 +122,6 @@ function display_admin_panel()
                       <option value="Dr. Ashok Goyal">Dr. Ashok Goyal</option> -->
                       <?php display_docs();?>
 
-
-
-
                     </select>
                   </div><br><br>
                   <div class="col-md-4"><label>Payment:</label></div>
@@ -152,7 +145,7 @@ function display_admin_panel()
       <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
         <div class="card">
           <div class="card-body">
-            <form class="form-group" method="post" action="func.php">
+            <form class="form-group" method="post" action="loginhandler.php">
               <input type="text" name="contact" class="form-control" placeholder="enter contact"><br>
               <select name="status" class="form-control">
                <option value="" disabled selected>Select Payment Status to update</option>
@@ -166,7 +159,7 @@ function display_admin_panel()
       </div>
       <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
       <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
-        <form class="form-group" method="post" action="func.php">
+        <form class="form-group" method="post" action="loginhandler.php">
           <label>Doctors name: </label>
           <input type="text" name="name" placeholder="enter doctors name" class="form-control">
           <br>

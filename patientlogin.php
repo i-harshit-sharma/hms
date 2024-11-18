@@ -1,8 +1,5 @@
-<?php
-?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,6 +24,7 @@
 </style>
 
 <body style="background: -webkit-linear-gradient(left, #3931af, #00c6ff); background-size: cover;">
+  <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
 
@@ -60,12 +58,8 @@
     </div>
   </nav>
 
-
-
   <div class="container-fluid" style="margin-top:60px;margin-bottom:60px;color:#34495E;">
     <div class="row">
-
-
 
       <div class="col-md-7" style="padding-left: 180px; ">
         <div style="-webkit-animation: mover 2s infinite alternate;
@@ -86,7 +80,7 @@
               <i class="fa fa-hospital-o fa-3x" aria-hidden="true" style="color:#0062cc"></i>
               <br>
               <h3 style="margin-top: 10%">Patient Login</h3><br>
-              <form class="form-group" method="POST" action="func.php">
+              <form class="form-group" method="POST" action="loginhandler.php">
                 <div class="row" style="margin-top: 10%">
                   <div class="col-md-4"><label>Email-ID: </label></div>
                   <div class="col-md-8"><input type="text" name="email" class="form-control" placeholder="enter email ID" required /></div><br><br>
