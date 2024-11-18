@@ -10,7 +10,6 @@ if (isset($_POST['adsub'])) {
 		$_SESSION['username'] = $username;
 		header("Location:admin-panel1.php");
 	} else
-		// header("Location:error2.php");
 		echo ("<script>alert('Invalid Username or Password. Try Again!');
           window.location.href = 'index.php';</script>");
 }
@@ -23,9 +22,6 @@ if (isset($_POST['update_data'])) {
 		header("Location:updated.php");
 }
 
-
-
-
 function display_docs()
 {
 	global $con;
@@ -33,7 +29,6 @@ function display_docs()
 	$result = mysqli_query($con, $query);
 	while ($row = mysqli_fetch_array($result)) {
 		$name = $row['name'];
-		# echo'<option value="" disabled selected>Select Doctor</option>';
 		echo '<option value="' . $name . '">' . $name . '</option>';
 	}
 }

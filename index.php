@@ -95,7 +95,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <h3 class="register-heading">Register as Patient</h3>
-                        <form method="post" action="func2.php">
+                        <form method="post" action="patientloginhandler.php">
                             <div class="row register-form">
 
                                 <div class="col-md-6">
@@ -135,7 +135,7 @@
                                     <div class="form-group">
                                         <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password *" name="cpassword" onkeyup='check();' required /><span id='message'></span>
                                     </div>
-                                    <input type="submit" class="btnRegister" name="patsub1" onclick="return checklen();" value="Register" />
+                                    <input type="submit" class="btnRegister" name="patreg" onclick="return checklen();" value="Register" />
                                 </div>
 
                             </div>

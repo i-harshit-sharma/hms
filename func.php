@@ -20,7 +20,6 @@ if (isset($_POST['patsub'])) {
   } else {
     echo ("<script>alert('Invalid Username or Password. Try Again!');
           window.location.href = 'patientlogin.php';</script>");
-    // header("Location:error.php");
   }
 }
 if (isset($_POST['update_data'])) {
@@ -31,22 +30,6 @@ if (isset($_POST['update_data'])) {
   if ($result)
     header("Location:updated.php");
 }
-
-
-
-
-// function display_docs()
-// {
-// 	global $con;
-// 	$query="select * from doctor";
-// 	$result=mysqli_query($con,$query);
-// 	while($row=mysqli_fetch_array($result))
-// 	{
-// 		$name=$row['name'];
-//     $cost=$row['docFees'];
-// 		echo '<option value="'.$name.'" data-price="' .$cost. '" >'.$name.'</option>';
-// 	}
-// }
 
 if (isset($_POST['doc_sub'])) {
   $doctor = $_POST['doctor'];

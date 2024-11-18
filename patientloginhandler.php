@@ -1,7 +1,7 @@
 <?php
 session_start();
 $con = mysqli_connect("localhost", "root", "", "myhmsdb");
-if (isset($_POST['patsub1'])) {
+if (isset($_POST['patreg'])) {
   $fname = $_POST['fname'];
   $lname = $_POST['lname'];
   $gender = $_POST['gender'];
@@ -39,22 +39,6 @@ if (isset($_POST['update_data'])) {
   if ($result)
     header("Location:updated.php");
 }
-
-
-
-
-// function display_docs()
-// {
-// 	global $con;
-// 	$query="select * from doctor";
-// 	$result=mysqli_query($con,$query);
-// 	while($row=mysqli_fetch_array($result))
-// 	{
-// 		$name=$row['name'];
-// 		# echo'<option value="" disabled selected>Select Doctor</option>';
-// 		echo '<option value="'.$name.'">'.$name.'</option>';
-// 	}
-// }
 
 if (isset($_POST['doc_sub'])) {
   $name = $_POST['name'];

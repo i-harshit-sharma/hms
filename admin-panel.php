@@ -227,7 +227,6 @@ function get_specs()
 </style>
 
 <body style="padding-top:50px;">
-
   <div class="container-fluid" style="margin-top:50px;">
     <h3 style="margin-left: 40%;  padding-bottom: 20px; font-family: 'IBM Plex Sans', sans-serif;"> Welcome &nbsp<?php echo $username ?>
     </h3>
@@ -375,56 +374,10 @@ function get_specs()
                         };
                       </script>
 
-
-
-
-
-                      <!-- <div class="col-md-4"><label for="doctor">Doctors:</label></div>
-                                <div class="col-md-8">
-                                    <select name="doctor" class="form-control" id="doctor1" required="required">
-                                      <option value="" disabled selected>Select Doctor</option>
-                                      
-                                    </select>
-                                </div>
-                                <br><br> -->
-
-                      <!-- <script>
-                                  document.getElementById("spec").onchange = function updateSpecs(event) {
-                                      var selected = document.querySelector(`[data-value=${this.value}]`).getAttribute("value");
-                                      console.log(selected);
-
-                                      var options = document.getElementById("doctor1").querySelectorAll("option");
-
-                                      for (i = 0; i < options.length; i++) {
-                                        var currentOption = options[i];
-                                        var category = options[i].getAttribute("data-spec");
-
-                                        if (category == selected) {
-                                          currentOption.style.display = "block";
-                                        } else {
-                                          currentOption.style.display = "none";
-                                        }
-                                      }
-                                    }
-                                </script> -->
-
-
-                      <!-- <script>
-                    let data = 
-                
-              document.getElementById('spec').onchange = function updateSpecs(e) {
-                let values = data.filter(obj => obj.spec == this.value).map(o => o.username);   
-                document.getElementById('doctor1').value = document.querySelector(`[value=${values}]`).getAttribute('data-value');
-              };
-            </script> -->
-
-
-
                       <div class="col-md-4"><label for="consultancyfees">
                           Consultancy Fees
                         </label></div>
                       <div class="col-md-8">
-                        <!-- <div id="docFees">Select a doctor</div> -->
                         <input class="form-control" type="text" name="docFees" id="docFees" readonly="readonly" />
                       </div><br><br>
 
@@ -433,7 +386,6 @@ function get_specs()
 
                       <div class="col-md-4"><label>Appointment Time</label></div>
                       <div class="col-md-8">
-                        <!-- <input type="time" class="form-control" name="apptime"> -->
                         <select name="apptime" class="form-control" id="apptime" required="required">
                           <option value="" disabled selected>Select Time</option>
                           <option value="08:00:00">8:00 AM</option>
@@ -442,9 +394,7 @@ function get_specs()
                           <option value="14:00:00">2:00 PM</option>
                           <option value="16:00:00">4:00 PM</option>
                         </select>
-
                       </div><br><br>
-
                       <div class="col-md-4">
                         <input type="submit" name="app-submit" value="Create new entry" class="btn btn-primary" id="inputbtn">
                       </div>
@@ -455,13 +405,10 @@ function get_specs()
               </div>
             </div><br>
           </div>
-
           <div class="tab-pane fade" id="app-hist" role="tabpanel" aria-labelledby="list-pat-list">
-
             <table class="table table-hover">
               <thead>
                 <tr>
-
                   <th scope="col">Doctor Name</th>
                   <th scope="col">Consultancy Fees</th>
                   <th scope="col">Appointment Date</th>
@@ -472,25 +419,17 @@ function get_specs()
               </thead>
               <tbody>
                 <?php
-
                 $con = mysqli_connect("localhost", "root", "", "myhmsdb");
                 global $con;
-
                 $query = "select ID,doctor,docFees,appdate,apptime,userStatus,doctorStatus from appointment where fname ='$fname' and lname='$lname';";
                 $result = mysqli_query($con, $query);
                 while ($row = mysqli_fetch_array($result)) {
-
-                  #$fname = $row['fname'];
-                  #$lname = $row['lname'];
-                  #$email = $row['email'];
-                  #$contact = $row['contact'];
                 ?>
                   <tr>
                     <td><?php echo $row['doctor']; ?></td>
                     <td><?php echo $row['docFees']; ?></td>
                     <td><?php echo $row['appdate']; ?></td>
                     <td><?php echo $row['apptime']; ?></td>
-
                     <td>
                       <?php if (($row['userStatus'] == 1) && ($row['doctorStatus'] == 1)) {
                         echo "Active";
@@ -568,11 +507,6 @@ function get_specs()
                     <td><?php echo $row['prescription']; ?></td>
                     <td>
                       <form method="get">
-                        <!-- <a href="admin-panel.php?ID=" 
-                              onClick=""
-                              title="Pay Bill" tooltip-placement="top" tooltip="Remove"><button class="btn btn-success">Pay</button>
-                              </a></td> -->
-
                         <a href="admin-panel.php?ID=<?php echo $row['ID'] ?>">
                           <input type="hidden" name="ID" value="<?php echo $row['ID'] ?>" />
                           <input type="submit" onclick="alert('Bill Paid Successfully');" name="generate_bill" class="btn btn-success" value="Pay Bill" />
@@ -588,10 +522,6 @@ function get_specs()
             </table>
             <br>
           </div>
-
-
-
-
           <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
           <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
             <form class="form-group" method="post" action="func.php">
@@ -606,16 +536,10 @@ function get_specs()
       </div>
     </div>
   </div>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.10.1/sweetalert2.all.min.js">
   </script>
-
-
-
 </body>
-
 </html>

@@ -10,38 +10,16 @@ if (isset($_GET['cancel'])) {
   }
 }
 
-// if(isset($_GET['prescribe'])){
-
-//   $pid = $_GET['pid'];
-//   $ID = $_GET['ID'];
-//   $appdate = $_GET['appdate'];
-//   $apptime = $_GET['apptime'];
-//   $disease = $_GET['disease'];
-//   $allergy = $_GET['allergy'];
-//   $prescription = $_GET['prescription'];
-//   $query=mysqli_query($con,"insert into prescriptions(doctor,pid,ID,appdate,apptime,disease,allergy,prescription) values ('$doctor',$pid,$ID,'$appdate','$apptime','$disease','$allergy','$prescription');");
-//   if($query)
-//   {
-//     echo "<script>alert('Prescribed successfully!');</script>";
-//   }
-//   else{
-//     echo "<script>alert('Unable to process your request. Try again!');</script>";
-//   }
-// }
-
-
 ?>
 <html lang="en">
 
 <head>
 
 
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
-  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">

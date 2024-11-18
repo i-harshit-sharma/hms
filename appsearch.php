@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<?php #include("func.php");
-?>
 <html>
 
 <head>
