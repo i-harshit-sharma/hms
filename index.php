@@ -1,12 +1,13 @@
 <html>
 
 <head>
-    <title>HMS</title>
+    <title>Health Centre NIT Delhi</title>
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="style1.css">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="vendor/fontawesome/css/font-awesome.min.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="footer.css">
     <style>
         .form-control {
             border-radius: 0.75rem;
@@ -42,8 +43,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-            <a contenteditable="true" class="navbar-brand js-scroll-trigger" href="#" style="margin-top: 10px;margin-left:-65px;font-family: 'IBM Plex Sans', sans-serif;">
-                <h4><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp HMS</h4>
+            <a class="navbar-brand js-scroll-trigger" href="#" style="margin-top: 10px;margin-left:-65px;font-family: 'IBM Plex Sans', sans-serif;">
+                <h4><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp Health Centre NIT Delhi</h4>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -190,6 +191,138 @@
         </div>
 
     </div>
+    <!DOCTYPE html>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .slider {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+      /* max-height: 600px; */
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      margin: 50px auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slides img {
+      width: 100%;
+      border: none;
+      display: block;
+    }
+    .dots {
+      text-align: center;
+      margin-top: 10px;
+      position: absolute;
+      bottom: 0;
+      left: 30%;    
+    }
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .dot.active {
+      background-color: #717171;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider">
+    <div class="slides">
+      <img src="./images/slide1.webp" alt="Slide 1">
+      <img src="./images/slide2.webp" alt="Slide 2">
+      <img src="./images/slide3.webp" alt="Slide 3">
+      <img src="./images/slide4.webp" alt="Slide 3">
+      <img src="./images/slide5.webp" alt="Slide 3">
+      <img src="./images/slide6.webp" alt="Slide 3">
+      <img src="./images/slide7.webp" alt="Slide 3">
+      <img src="./images/slide8.webp" alt="Slide 3">
+    </div>
+    <div class="dots">
+        <span class="dot" onclick="showSlide(0)"></span>
+        <span class="dot" onclick="showSlide(1)"></span>
+        <span class="dot" onclick="showSlide(2)"></span>
+        <span class="dot" onclick="showSlide(3)"></span>
+        <span class="dot" onclick="showSlide(4)"></span>
+        <span class="dot" onclick="showSlide(5)"></span>
+        <span class="dot" onclick="showSlide(6)"></span>
+        <span class="dot" onclick="showSlide(7)"></span>
+        <span class="dot" onclick="showSlide(8)"></span>
+    </div>
+</div>
+    
+  <script>
+    let currentIndex = 0;
+    const slides = document.querySelector('.slides');
+    const dots = document.querySelectorAll('.dot');
+    const slideCount = dots.length;
+
+    function showSlide(index) {
+      currentIndex = index;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+      updateDots();
+    }
+    function updateDots() {
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
+      });
+    }
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slideCount;
+      showSlide(currentIndex);
+    }, 2000);
+    showSlide(0);
+  </script>
+
+<footer>
+      <div class="footer-container">
+        <div class="footer-section about">
+          <h2>About NIT Delhi Health Care</h2>
+          <p>
+            The NIT Delhi Health Centre provides health services to students,
+            faculty, and staff. We aim to deliver top-quality healthcare and
+            maintain a database of student and employee health records for
+            effective management.
+          </p>
+        </div>
+        <div class="footer-section contact">
+          <h2>Contact Us</h2>
+          <p><span class="icon">📞</span> +91-11-33861000</p>
+          <p><span class="icon">✉️</span> healthcare@nitdelhi.ac.in</p>
+          <p>
+            <span class="icon">📍</span> Zone P1, National Institute of
+            Technology, Plot No. FA7, GT Karnal Rd, Garthi Khurad, Bakoli,
+            Delhi, 110036
+          </p>
+        </div>
+        <div class="footer-section links">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 NIT Delhi. All Rights Reserved.</p>
+      </div>
+    </footer>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -73,7 +73,12 @@ function generate_bill()
   $con = mysqli_connect("localhost", "root", "", "myhmsdb");
   $pid = $_SESSION['pid'];
   $output = '';
-  $query = mysqli_query($con, "select p.pid,p.ID,p.fname,p.lname,p.doctor,p.appdate,p.apptime,p.disease,p.allergy,p.prescription,a.docFees from prescriptions p inner join appointment a on p.ID=a.ID and p.pid = '$pid' and p.ID = '" . $_GET['ID'] . "'");
+  $query = mysqli_query($con, "SELECT p2.pid, p.ID, p.fname, p.lname, p.doctor, p.appdate, p.apptime, p.disease, p.allergy, p.prescription, a.docFees 
+                             FROM prescriptions p 
+                             INNER JOIN appointment a ON p.ID = a.ID 
+                             JOIN patient p2 ON p2.fname = p.fname AND p2.lname = p.lname 
+                             WHERE p2.pid = '$pid' AND p.ID = '" . $_GET['ID'] . "'");
+
   while ($row = mysqli_fetch_array($query)) {
     $output .= '
     <label> Patient ID : </label>' . $row["pid"] . '<br/><br/>
@@ -115,7 +120,7 @@ if (isset($_GET["generate_bill"])) {
 
   $content .= '
       <br/>
-      <h2 align ="center"> HMS</h2></br>
+      <h2 align ="center"> Health Centre NIT Delhi</h2></br>
       <h3 align ="center"> Bill</h3>
       
 
@@ -155,7 +160,7 @@ function get_specs()
 
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> HMS </a>
+    <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> Health Centre NIT Delhi </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -206,7 +211,7 @@ function get_specs()
 
 <body style="padding-top:50px;">
   <div class="container-fluid" style="margin-top:50px;">
-    <h3 style="margin-left: 40%;  padding-bottom: 20px; font-family: 'IBM Plex Sans', sans-serif;"> Welcome &nbsp<?php echo $username ?>
+    <h3 style="margin-left: 40%;  padding-bottom: 20px; font-family: 'IBM Plex Sans', sans-serif;"> Welcome &nbsp<?php echo $username, $pid ?>
     </h3>
     <div class="row">
       <div class="col-md-4" style="max-width:25%; margin-top: 3%">
@@ -428,7 +433,7 @@ function get_specs()
                 $con = mysqli_connect("localhost", "root", "", "myhmsdb");
                 global $con;
 
-                $query = "select doctor,ID,appdate,apptime,disease,allergy,prescription from prescriptions where pid='$pid';";
+                $query = "select doctor,ID,appdate,apptime,disease,allergy,prescription from prescriptions p JOIN patient p2 ON p.fname = p2.fname where p2.pid ='$pid';";
 
                 $result = mysqli_query($con, $query);
                 if (!$result) {

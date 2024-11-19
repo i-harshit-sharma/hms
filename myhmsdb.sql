@@ -1,11 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.8.0
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Generation Time: Mar 16, 2020 at 02:34 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
@@ -301,7 +293,9 @@ CREATE TABLE `doctor` (
     `password` varchar(50) NOT NULL,
     `email` varchar(50) NOT NULL,
     `spec` varchar(50) NOT NULL,
-    `docFees` int(10) NOT NULL
+    `docFees` int(10) NOT NULL,
+    address varchar(50) NOT NULL,
+    phone varchar(10) NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 --
@@ -314,63 +308,81 @@ INSERT INTO
         `password`,
         `email`,
         `spec`,
-        `docFees`
+        `docFees`,
+        `address`,
+        `phone`
     )
 VALUES (
         'ashok',
         'ashok123',
         'ashok@gmail.com',
         'General',
-        500
+        500,
+        'Room No. 012 Mini Campus NIT, Delhi',
+        '9876543210'
     ),
     (
         'arun',
         'arun123',
         'arun@gmail.com',
         'Cardiologist',
-        600
+        600,
+        'Room No. 012 Mini Campus NIT, Delhi',
+        '9876543210'
     ),
     (
         'Dinesh',
         'dinesh123',
         'dinesh@gmail.com',
         'General',
-        700
+        700,
+        'Room No. 012 Mini Campus NIT, Delhi',
+        '9876543210'
     ),
     (
         'Ganesh',
         'ganesh123',
         'ganesh@gmail.com',
         'Pediatrician',
-        550
+        550,
+        'Room No. 012 Mini Campus NIT, Delhi',
+        '9876543210'
     ),
     (
         'Kumar',
         'kumar123',
         'kumar@gmail.com',
         'Pediatrician',
-        800
+        800,
+        'Room No. 012 Mini Campus NIT, Delhi',
+        '9876543210'
     ),
     (
         'Amit',
         'amit123',
         'amit@gmail.com',
         'Cardiologist',
-        1000
+        1000,
+        'Room No. 012 Mini Campus NIT, Delhi',
+        '9876543210'
     ),
     (
         'Abbis',
         'abbis123',
         'abbis@gmail.com',
         'Neurologist',
-        1500
+        1500,
+        'Room No. 012 Mini Campus NIT, Delhi',
+        '9876543210'
     ),
     (
         'Tiwary',
         'tiwary123',
         'tiwary@gmail.com',
         'Pediatrician',
-        450
+        450,
+        'Room No. 012 Mini Campus NIT, Delhi',
+        '9876543210'
     );
 
 -- --------------------------------------------------------
@@ -387,7 +399,8 @@ CREATE TABLE `patient` (
     `email` varchar(30) NOT NULL,
     `contact` varchar(10) NOT NULL,
     `password` varchar(30) NOT NULL,
-    `cpassword` varchar(30) NOT NULL
+    `cpassword` varchar(30) NOT NULL,
+    `dob` date NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 --
@@ -403,7 +416,8 @@ INSERT INTO
         `email`,
         `contact`,
         `password`,
-        `cpassword`
+        `cpassword`,
+        `dob`
     )
 VALUES (
         1,
@@ -413,7 +427,8 @@ VALUES (
         'ram@gmail.com',
         '9876543210',
         'ram123',
-        'ram123'
+        'ram123',
+        '1995-11-17'
     ),
     (
         2,
@@ -423,7 +438,8 @@ VALUES (
         'alia@gmail.com',
         '8976897689',
         'alia123',
-        'alia123'
+        'alia123',
+        '1996-11-17'
     ),
     (
         3,
@@ -433,7 +449,8 @@ VALUES (
         'shahrukh@gmail.com',
         '8976898463',
         'shahrukh123',
-        'shahrukh123'
+        'shahrukh123',
+        '1997-11-17'
     ),
     (
         4,
@@ -443,7 +460,8 @@ VALUES (
         'kishansmart0@gmail.com',
         '8838489464',
         'kishan123',
-        'kishan123'
+        'kishan123',
+        '1998-11-17'
     ),
     (
         5,
@@ -453,7 +471,8 @@ VALUES (
         'gautam@gmail.com',
         '9070897653',
         'gautam123',
-        'gautam123'
+        'gautam123',
+        '1999-11-17'
     ),
     (
         6,
@@ -463,7 +482,8 @@ VALUES (
         'sushant@gmail.com',
         '9059986865',
         'sushant123',
-        'sushant123'
+        'sushant123',
+        '2000-11-17'
     ),
     (
         7,
@@ -473,7 +493,8 @@ VALUES (
         'nancy@gmail.com',
         '9128972454',
         'nancy123',
-        'nancy123'
+        'nancy123',
+        '2001-11-17'
     ),
     (
         8,
@@ -483,7 +504,8 @@ VALUES (
         'kenny@gmail.com',
         '9809879868',
         'kenny123',
-        'kenny123'
+        'kenny123',
+        '2002-11-17'
     ),
     (
         9,
@@ -493,7 +515,8 @@ VALUES (
         'william@gmail.com',
         '8683619153',
         'william123',
-        'william123'
+        'william123',
+        '2003-11-17'
     ),
     (
         10,
@@ -503,7 +526,8 @@ VALUES (
         'peter@gmail.com',
         '9609362815',
         'peter123',
-        'peter123'
+        'peter123',
+        '2004-11-17'
     ),
     (
         11,
@@ -513,7 +537,8 @@ VALUES (
         'shraddha@gmail.com',
         '9768946252',
         'shraddha123',
-        'shraddha123'
+        'shraddha123',
+        '2005-11-17'
     );
 
 --
@@ -636,3 +661,12 @@ COMMIT;
 ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */
 ;
+CREATE TABLE Weight (
+    PID INT,
+    Weight float(2),
+    Date date,
+    time TIME
+);
+
+ALTER Table Weight
+ADD PRIMARY KEY (PID, Date, time);
